@@ -1,0 +1,119 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "profilePicAnim",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 1,
+  "sample": 60,
+  "speed": 1,
+  "wrapMode": "2",
+  "curveData": {
+    "props": {
+      "position": [
+        {
+          "frame": 0,
+          "value": [
+            0.2,
+            181.2
+          ],
+          "motionPath": []
+        },
+        {
+          "frame": 0.08333333333333333,
+          "value": [
+            -3.7,
+            178.3
+          ],
+          "motionPath": []
+        },
+        {
+          "frame": 0.16666666666666666,
+          "value": [
+            -6.5,
+            176.2
+          ],
+          "motionPath": []
+        },
+        {
+          "frame": 0.25,
+          "value": [
+            -9.6,
+            175
+          ]
+        },
+        {
+          "frame": 0.3333333333333333,
+          "value": [
+            -12.4,
+            172.9
+          ]
+        },
+        {
+          "frame": 0.4166666666666667,
+          "value": [
+            -15.4,
+            176.9
+          ],
+          "motionPath": []
+        },
+        {
+          "frame": 0.5,
+          "value": [
+            -2,
+            181.5
+          ],
+          "motionPath": []
+        },
+        {
+          "frame": 0.5833333333333334,
+          "value": [
+            0.8,
+            178.6
+          ],
+          "motionPath": []
+        },
+        {
+          "frame": 0.6666666666666666,
+          "value": [
+            2.8,
+            176.3
+          ],
+          "motionPath": []
+        },
+        {
+          "frame": 0.75,
+          "value": [
+            5.9,
+            173.9
+          ],
+          "motionPath": []
+        },
+        {
+          "frame": 0.8333333333333334,
+          "value": [
+            10.9,
+            173.1
+          ],
+          "motionPath": []
+        },
+        {
+          "frame": 0.9166666666666666,
+          "value": [
+            7.1,
+            176.7
+          ],
+          "motionPath": []
+        },
+        {
+          "frame": 1,
+          "value": [
+            2.6,
+            179.6
+          ],
+          "motionPath": []
+        }
+      ]
+    }
+  },
+  "events": []
+}
