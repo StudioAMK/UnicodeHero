@@ -59,7 +59,7 @@ cc.Class({
 
     onAnswerChanged(userText, editBoxObject) {
         this.setAnswer(userText);
-        this.answerTextBox.setFocus();
+        this.answerTextBox.focus();
     },
 
     setAnswer(answerText) {

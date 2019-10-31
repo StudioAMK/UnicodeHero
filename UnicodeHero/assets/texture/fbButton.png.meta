@@ -1,14 +1,16 @@
 {
-  "ver": "2.3.0",
+  "ver": "2.3.3",
   "uuid": "c13a515d-f25d-4f42-93ee-d83d6be956d1",
   "type": "sprite",
   "wrapMode": "clamp",
   "filterMode": "bilinear",
   "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
   "platformSettings": {},
   "subMetas": {
     "fbButton": {
-      "ver": "1.0.3",
+      "ver": "1.0.4",
       "uuid": "c996af00-793d-49e8-9085-e3d61c718473",
       "rawTextureUuid": "c13a515d-f25d-4f42-93ee-d83d6be956d1",
       "trimType": "auto",

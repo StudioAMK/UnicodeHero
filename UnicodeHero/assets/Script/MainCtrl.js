@@ -101,7 +101,7 @@ cc.Class({
 
     setEditBoxFocus() {
         let MainCtrl = this;
-        MainCtrl.editBoxAnswer.setFocus();
+        MainCtrl.editBoxAnswer.focus();
     },
 
     onKeyUp() {
@@ -136,8 +136,10 @@ cc.Class({
         MainCtrl.characterCtrl = MainCtrl.character.getComponent('CharacterCtrl');
         MainCtrl.answerBoxCtrl = MainCtrl.answerBox.getComponent('WordsChecker');
         MainCtrl.editBoxAnswer = MainCtrl.answerBox.getComponent(cc.EditBox);
-        MainCtrl.editBoxAnswer.setFocus();
         MainCtrl.editBoxAnswer.string = "";
+        MainCtrl.editBoxAnswer.placeholderLabel.string = "";
+        MainCtrl.editBoxAnswer.focus();
+
         MainCtrl.setUpGround();
         MainCtrl.isJump = false;
     },
@@ -194,6 +196,7 @@ cc.Class({
             let richTextWidth = MainCtrl.obstacleCtrl.getRichTextWidth();
             MainCtrl.answerBox.width = richTextWidth;
             MainCtrl.answerBox.position = nextObstacleEditBoxPosition;
+            MainCtrl.answerBox.y = MainCtrl.answerBox.y - 250;
         } else {
             clearInterval(MainCtrl.x);
             MainCtrl.finishLayout.active = true;
