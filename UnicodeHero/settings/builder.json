@@ -2,24 +2,20 @@
   "android-instant": {
     "REMOTE_SERVER_ROOT": "",
     "host": "",
+    "packageName": "org.cocos2d.UnicodeHero",
     "pathPattern": "",
     "recordPath": "",
     "scheme": "https",
     "skipRecord": false
   },
-  "appKey": "",
-  "appSecret": "",
   "encryptJs": true,
   "excludeScenes": [],
   "fb-instant-games": {},
-  "includeAnySDK": false,
   "includeSDKBox": false,
   "inlineSpriteFrames": true,
   "inlineSpriteFrames_native": true,
-  "jailbreakPlatform": false,
   "md5Cache": false,
   "mergeStartScene": false,
-  "oauthLoginServer": "",
   "optimizeHotUpdate": false,
   "orientation": {
     "landscapeLeft": true,
@@ -28,7 +24,6 @@
     "upsideDown": false
   },
   "packageName": "org.cocos2d.UnicodeHero",
-  "privateKey": "",
   "qqplay": {
     "REMOTE_SERVER_ROOT": "",
     "orientation": "portrait",
@@ -44,5 +39,22 @@
     "subContext": ""
   },
   "xxteaKey": "9c067b87-986d-46",
-  "zipCompressJs": true
+  "zipCompressJs": true,
+  "baidugame": {
+    "appid": "testappid",
+    "orientation": "portrait",
+    "REMOTE_SERVER_ROOT": "",
+    "subContext": ""
+  },
+  "appBundle": false,
+  "android": {
+    "packageName": "org.cocos2d.UnicodeHero"
+  },
+  "ios": {
+    "packageName": "org.cocos2d.UnicodeHero"
+  },
+  "mac": {
+    "packageName": "org.cocos2d.UnicodeHero"
+  },
+  "win32": {}
 }

@@ -16,10 +16,6 @@ cc.Class({
             default: cc.Color.GREEN
         },
 
-        mainCtrl: {
-            type: cc.Node,
-            default: null,
-        },
 
     },
 
@@ -32,11 +28,14 @@ cc.Class({
     start() {
 
     },
+    
+    linkWithMainController(mainController) {
+        this.mainController = mainController;
+    },
 
     init(obstacleLayoutList) {
         this.obstacleLayoutList = obstacleLayoutList;
         this.answerTextBox = this.node.getComponent(cc.EditBox);
-        this.mainController = this.mainCtrl.getComponent('MainCtrl');
         this.nextOstacle = 0;
         this.questionRichText = this.obstacleLayoutList[this.nextOstacle].getChildByName('questionRichText').getComponent(cc.RichText);
         this.word = this.removeTags(this.questionRichText.string);
@@ -59,6 +58,14 @@ cc.Class({
 
     onAnswerChanged(userText, editBoxObject) {
         this.setAnswer(userText);
+        this.answerTextBox.focus();
+    },
+
+    onEditDidEnd(){
+        this.scheduleOnce(this.focusEditBox, 0.5);
+    },
+
+    focusEditBox(){
         this.answerTextBox.focus();
     },
 
@@ -89,11 +96,12 @@ cc.Class({
                 //  let word = wordList.getRandomWord();
                 this.setQuestion(this.word);
                 this.answerTextBox.string = "";
+                 this.answerTextBox.focus();
             }
             //window.textbox = this.answerTextBox;
 
 
-            //this.answerTextBox.focus();
+           
         }
     },
 

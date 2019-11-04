@@ -30,7 +30,7 @@ cc.Class({
             type: cc.Label,
         },
 
-        answerBox: {
+        editBoxNode: {
             default: null,
             type: cc.Node,
         },
@@ -54,12 +54,6 @@ cc.Class({
             default: null,
             type: cc.Label,
         },
-
-        jumpAudio: {
-            default: null,
-            type: cc.AudioSource,
-        },
-
         jumpAudioClip: {
             default: null,
             type: cc.AudioClip,
@@ -87,16 +81,22 @@ cc.Class({
             default: null,
             type: cc.Node,
         },
-    },
+
+        obstacleMaskNode: {
+            default: null,
+            type: cc.Node,
+        },
+
+        editBoxPrefab: {
+            default: null,
+            type: cc.Prefab,
+        },
+    },  
 
     // LIFE-CYCLE CALLBACKS:
 
     onLoad() {
         let MainCtrl = this;
-        MainCtrl.editBoxAnswer = MainCtrl.answerBox.getComponent(cc.EditBox);
-        MainCtrl.touchEventNode.on('mousedown', MainCtrl.setEditBoxFocus, this);
-        cc.systemEvent.on(cc.SystemEvent.EventType.KEY_DOWN, MainCtrl.onKeyUp, this);
-
     },
 
     setEditBoxFocus() {
@@ -119,6 +119,9 @@ cc.Class({
 
     init() {
         let MainCtrl = this;
+        MainCtrl.answerBox = cc.instantiate(MainCtrl.editBoxPrefab);
+        MainCtrl.editBoxAnswer = MainCtrl.answerBox.getComponent(cc.EditBox);
+        MainCtrl.touchEventNode.on('mousedown', MainCtrl.setEditBoxFocus, this);
         MainCtrl.answerBox.active = true;
         MainCtrl.backgroundNode.y = -320;
         MainCtrl.scoreLabel.string = "0";
@@ -135,12 +138,15 @@ cc.Class({
         MainCtrl.obstacleLayout.removeAllChildren();
         MainCtrl.characterCtrl = MainCtrl.character.getComponent('CharacterCtrl');
         MainCtrl.answerBoxCtrl = MainCtrl.answerBox.getComponent('WordsChecker');
-        MainCtrl.editBoxAnswer = MainCtrl.answerBox.getComponent(cc.EditBox);
+        MainCtrl.answerBoxCtrl.linkWithMainController(MainCtrl);
+   
         MainCtrl.editBoxAnswer.string = "";
         MainCtrl.editBoxAnswer.placeholderLabel.string = "";
+        MainCtrl.editBoxNode.addChild(MainCtrl.answerBox);
         MainCtrl.editBoxAnswer.focus();
-
         MainCtrl.setUpGround();
+        MainCtrl.obstacleMaskNode.y = 0;
+        MainCtrl.obstacleLayout.y = 0;
         MainCtrl.isJump = false;
     },
 
@@ -176,15 +182,19 @@ cc.Class({
 
     onClickJump(score) {
         let MainCtrl = this;
-        MainCtrl.jumpAudio.play();
+        cc.audioEngine.play(MainCtrl.jumpAudioClip, false, 1);
         MainCtrl.moveBackground();
         MainCtrl.distance = 0;
         MainCtrl.isJump = true;
         MainCtrl.obstaclePosition = MainCtrl.obstacleCtrl.getPosition();
         let moveCharacter = cc.jumpTo(0.5, MainCtrl.obstaclePosition, 200, 1);
         let moveCamera = cc.moveTo(0.5, cc.v2(0, MainCtrl.mainCamera.y + 250));
+        let moveOstacleMask = cc.moveTo(0.5, cc.v2(0, MainCtrl.obstacleMaskNode.y + 250));
+        let moveOstacleLayout = cc.moveTo(0.5, cc.v2(0, MainCtrl.obstacleLayout.y - 250));
         MainCtrl.character.runAction(moveCharacter);
         MainCtrl.mainCamera.runAction(moveCamera);
+        MainCtrl.obstacleMaskNode.runAction(moveOstacleMask);
+        MainCtrl.obstacleLayout.runAction(moveOstacleLayout);
         MainCtrl.characterCtrl.playJumpAnim();
         MainCtrl.score += score;
         MainCtrl.scoreLabel.string = MainCtrl.score;
@@ -200,9 +210,12 @@ cc.Class({
         } else {
             clearInterval(MainCtrl.x);
             MainCtrl.finishLayout.active = true;
+            MainCtrl.editBoxAnswer.string = '';
+            MainCtrl.answerBox.destroy();
             MainCtrl.finishScoreLabel.string = "Total Score - " + MainCtrl.score;
             MainCtrl.finishTimeLabel.string = "Finish Time - " + MainCtrl.minutes + " mins" + " : " + MainCtrl.seconds + " seconds";
-            MainCtrl.editBoxAnswer.onDisable();
+   
+         
         }
 
     },
@@ -243,6 +256,10 @@ cc.Class({
         if (visibleWidth < 900) {
             MainCtrl.frameNode.width = visibleWidth;
         }
+
+        // if (MainCtrl.editBoxAnswer != null){
+        //     MainCtrl.editBoxAnswer.focus();
+        // }
     },
 
     restartGame() {
