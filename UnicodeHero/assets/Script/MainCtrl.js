@@ -250,17 +250,7 @@ cc.Class({
         MainCtrl.character.scaleX = MainCtrl.character.scaleX * -1;
     },
 
-    update(dt) {
-        let MainCtrl = this;
-        var visibleWidth = cc.view.getVisibleSize().width;
-        if (visibleWidth < 900) {
-            MainCtrl.frameNode.width = visibleWidth;
-        }
-
-        // if (MainCtrl.editBoxAnswer != null){
-        //     MainCtrl.editBoxAnswer.focus();
-        // }
-    },
+    //update(dt) {},
 
     restartGame() {
         let MainCtrl = this;
