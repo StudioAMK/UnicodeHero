@@ -9,8 +9,5 @@
     "keywords": [],
     "author": "",
     "license": "ISC",
-    "homepage": "https://studioamk.github.io/unicodehero",
-    "dependencies": {
-        "gh-pages": "^2.1.1"
-    }
+    "homepage": "https://studioamk.github.io/unicodehero"
 }
